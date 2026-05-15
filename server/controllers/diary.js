@@ -12,11 +12,11 @@ async function index(req, res) {
 async function show(req, res) {
   try {
     const id = parseInt(req.params.id);
-    const snack = await Diary.getById(id);
-    res.status(200).json(diary_entries);
+    const diary_entry = await Diary.getById(id);
+    res.status(200).json(diary_entry);
   } catch (err) {
     res.status(404).json({ "error": err.message })
   }
 }
 
-module.exports = {index}
+module.exports = {index, show}

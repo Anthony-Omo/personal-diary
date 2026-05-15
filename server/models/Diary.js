@@ -17,13 +17,15 @@ class Diary {
         return response.rows.map(d => new Diary(d));
     }
 
-     static async getById(id) {
-    const response = await db.query("SELECT * FROM diary_entries WHERE id = $1;", [id]);
+    static async getById(id) {
+        const response = await db.query("SELECT * FROM diary_entries WHERE id = $1;", [id]);
 
-    if (response.rows.length != 1) {
-      throw new Error("Unable to locate entry.")
-    }
+        if (response.rows.length != 1) {
+        throw new Error("Unable to locate entry.")
+        }
+        return new Diary(response.rows[0])
 
+    }   
 }
 
 module.exports = Diary
