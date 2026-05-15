@@ -29,7 +29,7 @@ class Diary {
 
     static async create(data) {
         const { title, content, category } = data;
-        const response = await db.query('INSERT INTO diary_entries (title, content, category) VALUES ($1, $2, $3,) RETURNING *;',
+        const response = await db.query('INSERT INTO diary_entries (title, content, category) VALUES ($1, $2, $3) RETURNING *;',
         [title, content, category]
         );
         const entryId = response.rows[0].id;
