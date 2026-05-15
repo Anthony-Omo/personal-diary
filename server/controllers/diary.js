@@ -41,8 +41,16 @@ async function update(req, res) {
   }
 }
 
-
-
+async function searchByCategory(req, res) {
+    try{
+        const category = req.params.category
+        const diary_entry = await Diary.searchByCategory(category)
+        res.status(200).json(diary_entry)
+    } catch(err){
+        res.status(404).json({"error": err.message})
+    }
+    
+}
 
 async function destroy(req, res) {
   try {
@@ -55,4 +63,4 @@ async function destroy(req, res) {
   }
 }
 
-module.exports = {index, show, create, destroy, update}
+module.exports = {index, show, create, destroy, update, searchByCategory}

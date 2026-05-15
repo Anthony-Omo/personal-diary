@@ -27,6 +27,16 @@ class Diary {
 
     } 
 
+    static async searchByCategory(category) {
+        const response = await db.query("SELECT * FROM diary_entries WHERE LOWER(category) = LOWER($1) ORDER BY entry_date DESC;", [category]);
+
+        if (response.rows.length != 1) {
+        throw new Error("No entries in that category.")
+        }
+        return new Diary(response.rows[0])
+
+    } 
+
     static async create(data) {
         const { title, content, category } = data;
         const response = await db.query('INSERT INTO diary_entries (title, content, category) VALUES ($1, $2, $3) RETURNING *;',
