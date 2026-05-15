@@ -1,0 +1,29 @@
+{
+  "name": "personal-diary",
+  "version": "1.0.0",
+  "description": "- Create a model for representing diary posts and CRUD functions to the model",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -L ./index.js",
+    "setup-db": "node ./database/setup.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anthony-Omo/personal-diary.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Anthony-Omo/personal-diary/issues"
+  },
+  "homepage": "https://github.com/Anthony-Omo/personal-diary#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14",
+    "pg": "^8.20.0"
+  }
+}
