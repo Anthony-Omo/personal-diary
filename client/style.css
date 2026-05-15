@@ -4,7 +4,9 @@ body{
     line-height: 1.6;
     font-size: 18px;
     color: #444444;
-    padding: 0 10px
+    padding: 0 10px;
+    background: linear-gradient(135deg, #ffe6f0, #f4ecff);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 h1,h2,h3 {
@@ -19,4 +21,36 @@ fieldset {
     display: flex;
     flex-direction: column;
     padding: 0.2rem;
+}
+
+form {
+    background: #ffffff;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08); 
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+    color: #8a2c58;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #f0c5d8;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+#posts > div {
+    background: white;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    border-left: 6px solid #d46a92;
+    border-radius: 14px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
 }

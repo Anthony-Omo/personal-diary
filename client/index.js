@@ -10,6 +10,16 @@ function createPostElement (data) {
     content.textContent = data["content"];
     post.appendChild(content);
 
+    const category = document.createElement("p");
+    category.textContent = data["category"];
+    post.appendChild(category);
+
+    const id = document.createElement("p");
+    id.textContent = data["id"];
+    post.appendChild(id);
+
+
+
     return post;
 }
 
@@ -34,6 +44,25 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
     const result = await fetch("http://localhost:3000/diary", options);
 
     if (result.status == 201) {
+        window.location.reload();
+    }
+    else{
+        alert("Bad Request")
+    }
+})
+
+document.getElementById("delete-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const form = new FormData(e.target);
+
+    const options = {
+        method: "DELETE",
+        }
+
+    const result = await fetch(`http://localhost:3000/diary/${form.get("postId")}`, options);
+
+    if (result.status == 200) {
         window.location.reload();
     }
 })
