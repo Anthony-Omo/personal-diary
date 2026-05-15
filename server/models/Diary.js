@@ -1,12 +1,30 @@
 const db = require('../database/connect');
 
-class Diar {
-    constructor({country_id, name, capital, population, languages, fun_fact, map_image_url}) {
-        this.country_id = country_id
-        this.name = name
-        this.capital = capital
-        this.population = population
-        this.languages = languages
-        this.fun_fact = fun_fact
-        this.map_image_url = map_image_url
- 
+class Diary {
+    constructor({id, title, content, entry_date, category}) {
+        this.id = id
+        this.title = title
+        this.content = content
+        this.entry_date = entry_date
+        this.category = category
+    }
+    
+    static async getAll() {
+        const response = await db.query("SELECT * FROM diary_entries ORDER by entry_date DESC;");
+        if (response.rows.length === 0) {
+            throw new Error("No entries available.")
+        }
+        return response.rows.map(d => new Diary(d));
+    }
+
+     static async getById(id) {
+    const response = await db.query("SELECT * FROM diary_entries WHERE id = $1;", [id]);
+
+    if (response.rows.length != 1) {
+      throw new Error("Unable to locate entry.")
+    }
+
+}
+
+module.exports = Diary
+

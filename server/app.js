@@ -6,6 +6,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/countries', diaryRouter);
+app.use('/diary', diaryRouter);
 
 module.exports = app
